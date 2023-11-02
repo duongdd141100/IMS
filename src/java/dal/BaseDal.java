@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class DBContext {
+public class BaseDal {
     Connection conn;
     PreparedStatement statement;
     ResultSet resultSet;
@@ -16,13 +16,13 @@ public class DBContext {
 
     /*USE BELOW METHOD FOR YOUR DATABASE CONNECTION FOR BOTH SINGLE AND MULTILPE SQL SERVER INSTANCE(s)*/
  /*DO NOT EDIT THE BELOW METHOD, YOU MUST USE ONLY THIS ONE FOR YOUR DATABASE CONNECTION*/
-    public DBContext() {
+    public BaseDal() {
         try {
             String url = "jdbc:sqlserver://" + serverName + ":" + portNumber + ";databaseName=" + dbName;
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(url, userID, password);
         } catch (Exception e) {
-            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(BaseDal.class.getName()).log(Level.SEVERE, null, e);
         }
 
     }
