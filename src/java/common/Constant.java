@@ -12,4 +12,6 @@ public class Constant {
     public static final String CREATE_ACTION = "CREATE";
     public static final String UPDATE_ACTION = "UPDATE";
     public static final String DELETE_ACTION = "DELETE";
+    public static final String VIEW_ALL_ACTION = "ALL";
+    public static final String VIEW_DETAIL_ACTION = "DETAIL";
 }
