@@ -7,6 +7,7 @@ package service.impl;
 import dal.ProjectDAL;
 import java.util.List;
 import modal.Project;
+import modal.User;
 import service.ProjectService;
 
 /**
@@ -40,6 +41,28 @@ public class ProjectServiceImpl implements ProjectService {
     @Override
     public void delete(Integer id) {
         projectDAL.delete(id);
+    }
+
+    @Override
+    public List<User> findStudentByClassIdAndProjectId(String classId, String projectId) {
+        return projectDAL.findStudentByClassIdAndProjectId(classId, projectId);
+    }
+
+    @Override
+    public void moveStudentIn(String projectId, String studentId) {
+        Project project = projectDAL.findById(Integer.parseInt(projectId));
+        projectDAL.moveStudentIn(projectId, studentId, project.getClassId());
+    }
+
+    @Override
+    public void moveStudentOut(String projectId, String studentId) {
+        Project project = projectDAL.findById(Integer.parseInt(projectId));
+        projectDAL.moveStudentOut(projectId, studentId, project.getClassId());
+    }
+
+    @Override
+    public List<User> findStudentsInClassNotInProject(Integer id, String classId) {
+        return projectDAL.findStudentsInClassNotInProject(id, classId);
     }
     
 }

@@ -1,0 +1,86 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/css.css to edit this template
+*/
+/* 
+    Created on : Nov 5, 2023, 1:46:38 PM
+    Author     : Do Duc Duong
+*/
+
+table {
+    width: 80%;
+}
+
+th, td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+th {
+  background-color: #04AA6D;
+  color: white;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+.project-tr:hover {background-color: coral;}
+.table-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.details-container {
+    display: flex;
+    flex-direction: column;
+}
+.detail {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.detail-description {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+.detail-title {
+    margin-left: 3rem;
+    width: 15rem;
+    display: flex;
+    align-items: center;
+}
+.detail-title-description {
+    margin-left: 3rem;
+    width: 15rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.input {
+    height: 2rem;
+    width: 80%;
+}
+.input-text-area {
+    margin-left: 18rem;
+    height: 20rem;
+}
+.btn-update {
+    background-color: green;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    border: 0;
+    margin-right: 10%;
+}
+.btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+#tr-in {
+    background-color: #f2f2f2;
+}
+#tr-out {
+    background-color: white;
+}
+

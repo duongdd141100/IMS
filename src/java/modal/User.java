@@ -5,6 +5,8 @@ package modal;
  */
 public class User {
     private Integer id;
+    
+    private String fullName;
 
     private String username;
     
@@ -20,6 +22,17 @@ public class User {
         this.password = password;
         this.image = image;
         this.isActive = isActive;
+    }
+
+    public User() {
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public void setId(Integer id) {

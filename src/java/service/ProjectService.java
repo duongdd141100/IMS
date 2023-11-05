@@ -6,6 +6,7 @@ package service;
 
 import java.util.List;
 import modal.Project;
+import modal.User;
 
 /**
  *
@@ -17,4 +18,12 @@ public interface ProjectService {
     void update(Integer id, String name, String classId, String leaderId, String description);
     Project findById(Integer id);
     void delete(Integer id);
+
+    public List<User> findStudentByClassIdAndProjectId(String classId, String projectId);
+
+    public void moveStudentIn(String projectId, String studentId);
+
+    public void moveStudentOut(String projectId, String studentId);
+
+    public List<User> findStudentsInClassNotInProject(Integer id, String classId);
 }

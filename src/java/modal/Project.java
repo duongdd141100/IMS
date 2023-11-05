@@ -11,16 +11,36 @@ package modal;
 public class Project {
     private Integer id;
     private String name;
+    private String classId;
     private String className;
+    private Integer leaderId;
     private String leaderName;
     private String description;
 
-    public Project(Integer id, String name, String className, String leaderName, String description) {
+    public Project(Integer id, String name, String classId, String className, Integer leaderId, String leaderName, String description) {
         this.id = id;
         this.name = name;
+        this.classId = classId;
         this.className = className;
+        this.leaderId = leaderId;
         this.leaderName = leaderName;
         this.description = description;
+    }
+
+    public Integer getLeaderId() {
+        return leaderId;
+    }
+
+    public void setLeaderId(Integer leaderId) {
+        this.leaderId = leaderId;
+    }
+
+    public String getClassId() {
+        return classId;
+    }
+
+    public void setClassId(String classId) {
+        this.classId = classId;
     }
 
     public Integer getId() {
