@@ -22,6 +22,10 @@ public class User {
         this.isActive = isActive;
     }
 
+    public User(Integer id, String username) {
+        this.id = id;
+        this.username = username;
+    }
     public void setId(Integer id) {
         this.id = id;
     }
