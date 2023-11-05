@@ -24,7 +24,6 @@ public class User {
         this.isActive = isActive;
     }
 
-<<<<<<< HEAD
     public User() {
     }
 
@@ -36,12 +35,10 @@ public class User {
         this.fullName = fullName;
     }
 
-=======
     public User(Integer id, String username) {
         this.id = id;
         this.username = username;
     }
->>>>>>> bf4b97d774159d51e52010cc700e13aeb3e8488b
     public void setId(Integer id) {
         this.id = id;
     }
