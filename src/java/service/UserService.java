@@ -14,4 +14,6 @@ import modal.User;
  */
 public interface UserService{
     List<User> findAllTeacher();
+    boolean registerSuccess(String fullname, String birthday, String address, String username, String password, String repassword);
+    User userLogin(String username, String password);
 }

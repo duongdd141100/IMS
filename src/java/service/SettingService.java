@@ -14,4 +14,6 @@ import modal.Setting;
  */
 public interface SettingService {
     List<Setting> findAllSemesterIsActive();
+    boolean updateSuccess(String id, String name, String type, String display_order, String status, String description );
+    boolean addnewSuccess(String name, String type, String display_order, String status, String description );
 }

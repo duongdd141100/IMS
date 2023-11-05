@@ -1,5 +1,7 @@
 package modal;
 
+import java.sql.Date;
+
 /**
  *
  */
@@ -15,6 +17,9 @@ public class User {
     private String image;
     
     private Boolean isActive;
+    private Date birthday;
+   private String address;
+   private int roldId;
 
     public User(Integer id, String username, String password, String image, Boolean isActive) {
         this.id = id;
@@ -22,6 +27,30 @@ public class User {
         this.password = password;
         this.image = image;
         this.isActive = isActive;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getRoldId() {
+        return roldId;
+    }
+
+    public void setRoldId(int roldId) {
+        this.roldId = roldId;
     }
 
     public User() {

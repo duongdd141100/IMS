@@ -16,6 +16,14 @@
         <servlet-name>ClassController</servlet-name>
         <servlet-class>controller.ClassController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SettingController</servlet-name>
+        <servlet-class>controller.SettingController</servlet-class>
+    </servlet>
+     <servlet>
+        <servlet-name>UserController</servlet-name>
+        <servlet-class>controller.UserController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BaseAuthenticationController</servlet-name>
         <url-pattern>/BaseAuthenticationController</url-pattern>
@@ -31,6 +39,14 @@
     <servlet-mapping>
         <servlet-name>ClassController</servlet-name>
         <url-pattern>/list-class</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SettingController</servlet-name>
+        <url-pattern>/Setting</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserController</servlet-name>
+        <url-pattern>/User</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

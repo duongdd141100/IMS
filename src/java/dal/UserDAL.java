@@ -42,5 +42,38 @@ public class UserDAL extends BaseDal {
             throw new RuntimeException(e.getMessage());
         }
     }
+    public List<User> getAll() {
+        List<User> list = new ArrayList<>();
+        String querry = "SELECT *FROM [user]";
+        try {
+            statement = conn.prepareStatement(querry);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt(1));
+                user.setFullName(resultSet.getString(2));
+                user.setBirthday(resultSet.getDate(3));
+                user.setAddress(resultSet.getString(4));
+                user.setUsername(resultSet.getString(5));
+                user.setPassword(resultSet.getString(6));
+                user.setRoldId(resultSet.getInt(7));
+                list.add(user);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    
+    public void insertUser(String fullname, String birthday,String address, String username, String password) {
+        List<User> list = new ArrayList<>();
+        String querry = "INSERT INTO [dbo].[user]([user_fullname],[birthday],[address],[username],[password],[rold_id]) VALUES ('"+fullname+"', '"+birthday+"', '"+address+"', '"+username+"', '"+password+"', 2)";
+        try {
+            statement = conn.prepareStatement(querry);
+            resultSet = statement.executeQuery();           
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
 }
