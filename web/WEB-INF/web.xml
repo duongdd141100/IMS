@@ -12,6 +12,10 @@
         <servlet-name>ProjectController</servlet-name>
         <servlet-class>controller.ProjectController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClassController</servlet-name>
+        <servlet-class>controller.ClassController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>BaseAuthenticationController</servlet-name>
         <url-pattern>/BaseAuthenticationController</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>ProjectController</servlet-name>
         <url-pattern>/projects</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClassController</servlet-name>
+        <url-pattern>/list-class</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
