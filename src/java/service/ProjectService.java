@@ -13,7 +13,7 @@ import modal.User;
  * @author Do Duc Duong
  */
 public interface ProjectService {
-    void create(String name, Integer classId, Integer leaderId, String description);
+    void create(String name, Integer classId, String description);
     List<Project> findAll();
     void update(Integer id, String name, String classId, String leaderId, String description);
     Project findById(Integer id);

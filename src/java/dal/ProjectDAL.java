@@ -19,7 +19,7 @@ public class ProjectDAL extends BaseDal{
             String sql = "select p.project_id, p.project_name, c.class_id, c.class_name, u.user_id, u.user_fullname, p.description from project p" +
                 " inner join class c" +
                 " on p.class_id = c.class_id" +
-                " inner join [user] u" +
+                " left join [user] u" +
                 " on u.user_id = p.leader_id";
             statement = conn.prepareStatement(sql);
             resultSet = statement.executeQuery();
@@ -55,9 +55,11 @@ public class ProjectDAL extends BaseDal{
             String sql = "select p.project_id, p.project_name, c.class_id, c.class_name, u.user_id, u.user_fullname, p.description from project p" +
                 " inner join class c" +
                 " on p.class_id = c.class_id" +
-                " inner join [user] u" +
-                " on u.user_id = p.leader_id";
+                " left join [user] u" +
+                " on u.user_id = p.leader_id" +
+                " where p.project_id = ?";
             statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 return new Project(resultSet.getInt("project_id"),
@@ -93,14 +95,14 @@ public class ProjectDAL extends BaseDal{
         }
     }
 
-    public void create(String name, Integer classId, Integer leaderId, String description) {
+    public void create(String name, Integer classId, String description) {
         try {
-            String sql = "insert into project(project_name, class_id, leader_id, description) values (? ,?, ?, ?)";
+            String sql = "insert into project(project_name, class_id, description) values (? , ?, ?)";
             statement = conn.prepareStatement(sql);
             statement.setString(1, name);
             statement.setInt(2, classId);
-            statement.setInt(3, leaderId);
-            statement.setString(4, description);
+            statement.setString(3, description);
+            statement.executeUpdate();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

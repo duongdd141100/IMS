@@ -14,7 +14,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import modal.Project;
 import modal.User;
+import service.ClassService;
 import service.ProjectService;
+import service.impl.ClassServiceImpl;
 import service.impl.ProjectServiceImpl;
 
 /**
@@ -25,6 +27,7 @@ public class ProjectController extends HttpServlet {
     
     private ProjectService projectService = new ProjectServiceImpl();
 
+    private ClassService classService = new ClassServiceImpl();
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -41,6 +44,7 @@ public class ProjectController extends HttpServlet {
             if (view == null || Constant.VIEW_ALL_ACTION.equals(view)) {
                 List<Project> project = projectService.findAll();
                 request.setAttribute("projects", project);
+                request.setAttribute("classes", classService.findAll());
                 request.getRequestDispatcher("view/project_management/project_list.jsp").forward(request, response);
             } else if (Constant.VIEW_DETAIL_ACTION.equals(view)) {
                 String id = request.getParameter("id");
@@ -80,7 +84,8 @@ public class ProjectController extends HttpServlet {
         String studentId = request.getParameter("studentId");
         switch (action) {
             case Constant.CREATE_ACTION:
-                projectService.create(name, Integer.parseInt(classId), Integer.parseInt(leaderId), description);
+                projectService.create(name, Integer.parseInt(classId), description);
+                response.sendRedirect("projects");
                 break;
             case Constant.UPDATE_ACTION:
                 projectService.update(Integer.parseInt(id), name, classId, leaderId, description);

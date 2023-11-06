@@ -27,14 +27,22 @@
                         <td>${p.description}</td>
                     </tr>
                 </c:forEach>
-                    <tr>
-                        <td></td>
+                <tr>
+                    <td></td>
+                    <form id="project-create" action="projects" method="POST">
                         <td><input name="name" type="text" placeholder="Name" ></td>
-                        <td><input name="className" type="text" placeholder="Name" ></td>
-                        <td><input name="name" type="text" placeholder="Name" ></td>
+                        <td><select name="classId">
+                            <c:forEach items="${classes}" var="s">
+                                <option 
+                                    value="${s.class_id}">${s.class_name}</option>
+                            </c:forEach>
+                        </select></td>
+                        <td><input name="leader" type="text" placeholder="Leader set in Project detail" disabled ></td>
                         <td><input name="description" type="text" placeholder="description" ></td>
-                        <td><button>Create</button></td>
-                    </tr>
+                        <input type="hidden" name="action" value="CREATE" >
+                    </form>
+                <td><button onclick="handleCreate()">Create</button></td>
+                </tr>
         </table>
         </div>
     </body>
@@ -42,5 +50,8 @@
 <script>
     const onViewProjectDetail = (id) => {
         window.location.href = 'projects?view=DETAIL&id=' + id;
+    }
+    const handleCreate = () => {
+        document.getElementById('project-create').submit()
     }
 </script>

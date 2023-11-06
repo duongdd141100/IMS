@@ -19,8 +19,8 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDAL projectDAL = new ProjectDAL();
 
     @Override
-    public void create(String name, Integer classId, Integer leaderId, String description) {
-        projectDAL.create(name, classId, leaderId, description);
+    public void create(String name, Integer classId, String description) {
+        projectDAL.create(name, classId, description);
     }
 
     @Override
