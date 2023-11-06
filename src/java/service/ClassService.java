@@ -21,4 +21,8 @@ public interface ClassService {
 
     modal.Class findById(Integer id);
 
+    public void update(String id, String name, String subjectId, String teacherId, String semesterId, String description);
+
+    public void create(String name, String subjectId, String teacherId, String semesterId, String description);
+
 }

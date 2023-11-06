@@ -30,12 +30,22 @@ public class ClassServiceImpl implements ClassService {
 
     @Override
     public Class findById(Integer id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return class_dal.findById(id);
     }
 
     @Override
     public List<Class> searchAll(String semester, String teacher, String subject, String class_name) {
         return class_dal.searchAll(semester, teacher, subject, class_name);
+    }
+
+    @Override
+    public void update(String id, String name, String subjectId, String teacherId, String semesterId, String description) {
+        class_dal.update(id, name, subjectId, teacherId, semesterId, description);
+    }
+
+    @Override
+    public void create(String name, String subjectId, String teacherId, String semesterId, String description) {
+        class_dal.create(name, subjectId, teacherId, semesterId, description);
     }
 
 }

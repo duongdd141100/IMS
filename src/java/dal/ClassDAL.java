@@ -88,12 +88,19 @@ public class ClassDAL extends BaseDal {
 
     public Class findById(Integer id) {
         try {
-            String sql = "SELECT * FROM Class WHERE class_id = ?";
+            String sql = "select c.*, s.subject_name, u.user_fullname, se.setting_name from class c" +
+                " inner join subject s" +
+                " on c.subject_id = s.subject_id" +
+                " inner join [user] u" +
+                " on u.user_id = c.teacher_id" +
+                " inner join setting se" +
+                " on se.setting_id = c.semester_id" +
+                " where c.class_id = ?";
             statement = conn.prepareStatement(sql);
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return new Class(
+                Class classs = new Class(
                         resultSet.getInt(CLASS_ID),
                         resultSet.getString(CLASS_NAME),
                         resultSet.getInt(SUBJECT_ID),
@@ -101,6 +108,10 @@ public class ClassDAL extends BaseDal {
                         resultSet.getInt(SEMESTER_ID),
                         resultSet.getString(DESCRIPTION)
                 );
+                classs.setSubjectName(resultSet.getString("subject_name"));
+                classs.setTeacherName(resultSet.getString("user_fullname"));
+                classs.setSemester(resultSet.getString("setting_name"));
+                return classs;
             }
             return null;
         } catch (SQLException e) {
@@ -121,4 +132,35 @@ public class ClassDAL extends BaseDal {
             throw new RuntimeException(e.getMessage());
         }
     }
+
+    public void update(String id, String name, String subjectId, String teacherId, String semesterId, String description) {
+        try {
+            String sql = "update class set class_name = ?, subject_id = ?, teacher_id = ?, semester_id = ?, description = ?"
+                    + " where class_id = ?";
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, subjectId);
+            statement.setString(3, teacherId);
+            statement.setString(4, semesterId);
+            statement.setString(5, description);
+            statement.setString(6, id);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    public void create(String name, String subjectId, String teacherId, String semesterId, String description) {
+        try {
+            String sql = "insert into class(class_name, subject_id, teacher_id, semester_id, description) values (? ,?, ?, ?, ?)";
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            statement.setString(2, subjectId);
+            statement.setString(3, teacherId);
+            statement.setString(4, semesterId);
+            statement.setString(5, description);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e.getMessage());
+        }    }
 }
