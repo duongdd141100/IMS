@@ -71,4 +71,8 @@ public class UserServiceImpl implements UserService{
         return user;
     }
     
+    public static void main(String[] args) {
+        User user = new UserServiceImpl().userLogin("giang@gmail.com", "1234");
+        System.out.println(user.getId()==null);
+    }
 }

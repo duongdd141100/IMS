@@ -14,26 +14,27 @@
         <title>JSP Page</title>
     </head>
     <body>
+        <h1>User dashboard</h1>
         <%User user = (User) session.getAttribute("user");
         if (user.getId()==1) {
             %>
-            <div>Already have an account? <a href="User?action=LOGIN">Login</a></div>
+            <div>System Setting <a href="Setting">Click here</a></div>
             <%
             }else if (user.getId()==2) {
                 %>
-                <div>Already have an account? <a href="User?action=LOGIN">Login</a></div>
+                
                 <%               
                 }else if (user.getId()==3) {
                     %>
-                    <div>Already have an account? <a href="User?action=LOGIN">Login</a></div>
+                    
                     <%
                     }else if (user.getId()==4) {
                         %>
-                        <div>Already have an account? <a href="User?action=LOGIN">Login</a></div>
+                        
                         <%
                         }else if (user.getId()==5) {
                             %>
-                            <div>Already have an account? <a href="User?action=LOGIN">Login</a></div>
+                            
                             <%
                             }
         %> 

@@ -103,13 +103,13 @@ public class UserController extends HttpServlet {
             String password = request.getParameter("password");
             System.out.println(username + " " + password);
             User user = new UserServiceImpl().userLogin(username, password);
-            System.out.println(user);
-            if(user.getId()!= 0) {
+            
+            if(user.getId()!= null) {
                 message = "Login success";
                 request.setAttribute("message", message);
                 request.getSession().setAttribute("user", user);
                 request.getRequestDispatcher("view/user_authen/authorization.jsp").forward(request, response);               
-            }else {
+            }else{
                 message = "Invalid information";
                 request.setAttribute("message", message);
                 request.getRequestDispatcher("view/user_authen/userlogin.jsp").forward(request, response);
